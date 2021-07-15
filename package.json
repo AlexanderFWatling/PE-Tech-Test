@@ -1,0 +1,22 @@
+{
+  "name": "solar-system-facts",
+  "version": "1.0.0",
+  "description": "Solar System Fact app using Node and React",
+  "main": "server.js",
+  "scripts": {
+    "start": "concurrently \"npm run server \" \"npm run client \" ",
+    "server": "node server.js",
+    "client": "node start-client.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^6.2.0"
+  },
+  "dependencies": {
+    "babel": "^6.23.0",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security"
+  }
+}
