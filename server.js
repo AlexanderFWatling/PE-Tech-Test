@@ -13,17 +13,7 @@ app.use(express.static("data"));
 
 // Get endpoint to be called for the body info
 app.get("/api/bodies", (req, res) => {
-
-  const body = req.query.body;
-
-  //check there is a query, if not send back error with code 400
-  if (!body) {
-    res.statusCode = 400;
-    res.json({
-      error: "Missing required parameter \"body\""
-    });
-  } else {
-
+    let arrayOfBodies = [];
     //read & then parse csv file of body information
   fs.createReadStream(path.resolve(__dirname, 'data', 'celestial-bodies.csv'))
     .pipe(csv.parse({ headers: true }))
@@ -34,37 +24,14 @@ app.get("/api/bodies", (req, res) => {
       console.log(`Cannot read CSV due to an error: ${error}`);
     })
     .on('data', row => {
-      /*The parsed csv is streamed row by row, check to see if the row matches the query
-      When a match is found return the parsed row and end the request
-      */
-      if(row.Name.toLowerCase() === body.toLowerCase() ) {
-        res.send(row);
-        res.end();
-      }
-    });
-  }
-});
-
-// Get endpoint to return list of bodies, allowing dynamic generation of components on the front-end
-app.get("/api/bodies/list", (req, res) => {
-  let listOfPlanets = []
-
-  fs.createReadStream(path.resolve(__dirname, 'data', 'celestial-bodies.csv'))
-    .pipe(csv.parse({ headers: true }))
-    .on('error', error => {
-    //handle internal error and respond appropriately
-    res.statusCode = 500;
-    res.send(`Error parsing data on the server due to ${error}`);
-    console.log(`Cannot read CSV due to an error: ${error}`);
-    })
-    .on('data', row => {
-    listOfPlanets.push(row.Name);
+        arrayOfBodies.push(row);
     })
     .on('end', () => {
-      res.send(listOfPlanets);
+      res.send(arrayOfBodies);
       res.end();
     })
-})
+});
+
 
 // app to listen on set port , log where to find server.
 
