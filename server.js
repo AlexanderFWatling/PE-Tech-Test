@@ -7,6 +7,9 @@ const app = express();
 // set port either based on env if there is one, if not use 3001
 app.set("port", process.env.PORT || 3001);
 
+// set static serving of img data in /data, /data will be used as the root for static img serving 
+app.use(express.static("data"));
+
 // Get endpoint to be called for the planet info
 app.get("/api/planets", (req, res) => {
   //return planet data
