@@ -1,10 +1,10 @@
 # PE-tech-test
 
 
-##Prerequisites
+## Prerequisites
 npm & node must be installed
 
-##Assumptions
+## Assumptions
 ### 1
 Data for the back-end API has already been provided. I would normally expect this kind of data to have been in a database, allowing me to load the data more dynamically instead of loading it **all** from a csv and once and returning **all** of the data at once.
 ### 2
@@ -17,7 +17,7 @@ Data from the API call made on the front-end is clean... will always return the 
 ## Issues
 ### 1
 Issue when I attempted to create unit tests for the front-end using ***nock*** (google npm nock). This was to check that the state of the CelestialBodies component was changing after making the API call.
-These tests **Would** be in their own COMPONENTNAME.test.js files if could have gotten them to work correctly. Currently the test I attempted to write for CelestialBodies actually sits in the App.test.js. 
+These tests **Would** be in their own COMPONENTNAME.test.js files if could have gotten them to work correctly. Currently the test I attempted to write for CelestialBodies actually sits in the App.test.js.
 ### 2
 I am personally not very visually intuitive, the table is somewhat styled. However I find it visually unappealing, as I'm not a designer nor find myself naturally able to design front-ends I left it as is in table.
 If this was a **real** project, I would expect a range of designs for different screen sizes... so that the css implementation can be dynamic and create a visually appealing application regardless of screen size etc.
