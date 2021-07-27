@@ -8,7 +8,7 @@ const app = express();
 // set port either based on env if there is one, if not use 3001
 app.set("port", process.env.PORT || 3001);
 
-// set static serving of img data in /data, /data will be used as the root for static img serving
+// set static serving of img data in /data, /data will be used as the root for static img serving. Hitting /img/earth.jpg return img of earth
 app.use(express.static("data"));
 
 // Get endpoint to be called for the body info
@@ -27,6 +27,7 @@ app.get("/api/bodies", (req, res) => {
         arrayOfBodies.push(row);
     })
     .on('end', () => {
+      console.log(arrayOfBodies)
       res.send(arrayOfBodies);
       res.end();
     })
