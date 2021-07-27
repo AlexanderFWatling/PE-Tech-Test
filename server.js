@@ -2,6 +2,7 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const csv = require("fast-csv");
+require('dotenv').config()
 //create app
 const app = express();
 
@@ -27,7 +28,6 @@ app.get("/api/bodies", (req, res) => {
         arrayOfBodies.push(row);
     })
     .on('end', () => {
-      console.log(arrayOfBodies)
       res.send(arrayOfBodies);
       res.end();
     })
@@ -36,6 +36,4 @@ app.get("/api/bodies", (req, res) => {
 
 // app to listen on set port , log where to find server.
 
-app.listen(app.get("port"), () => {
-  console.log(`Server running at: http://localhost:${app.get("port")}/`)
-})
+module.exports = app;
