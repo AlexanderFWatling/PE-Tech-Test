@@ -1,2 +1,3 @@
 const app = require("./server.js")
-app.listen(app.get("port")) 
+//start the app on the set port
+app.listen(app.get("port"))

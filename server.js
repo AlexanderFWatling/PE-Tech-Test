@@ -3,10 +3,11 @@ const fs = require("fs");
 const path = require("path");
 const csv = require("fast-csv");
 require('dotenv').config()
+
 //create app
 const app = express();
 
-// set port either based on env if there is one, if not use 3001
+// set port either based on env if there is one, if not use 3001 || 3001 because of the front-end app using 3000
 app.set("port", process.env.PORT || 3001);
 
 // set static serving of img data in /data, /data will be used as the root for static img serving. Hitting /img/earth.jpg return img of earth
@@ -34,6 +35,5 @@ app.get("/api/bodies", (req, res) => {
 });
 
 
-// app to listen on set port , log where to find server.
-
+//export app for testing
 module.exports = app;
